@@ -8,5 +8,5 @@ For usage, type:
 python3 processST.py -h
 ```
 
-Note: this (website)[http://mshang.ca/syntree/] displays syntactic trees containing Chinese characters properly.
+Note: this [website](http://mshang.ca/syntree/) displays syntactic trees containing Chinese characters properly.
 
