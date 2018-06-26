@@ -8,5 +8,8 @@ For usage, type:
 python3 processST.py -h
 ```
 
-Note: this [website](http://mshang.ca/syntree/) displays syntactic trees containing Chinese characters properly.
+Note: 
+
+1. this [website](http://mshang.ca/syntree/) displays syntactic trees containing Chinese characters properly.
+2. or use Latex to draw the tree which allows for more freedom and outputs a more beautiful one (see chinese_tree.txt)
 
