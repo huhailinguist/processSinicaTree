@@ -1,0 +1,48 @@
+% draw syntactic trees w/ Chinese characters
+
+% use xelatex to compile!
+
+\documentclass[11pt,a4paper]{article}
+
+% for the tree
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{tikz-qtree-compat}
+\usepackage{environ}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+
+% Chinese
+%\usepackage[UTF8]{ctex}
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+
+% for colored text
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\mybox}[1]{\framebox[1.02\width]{#1}}
+
+% box around text
+\usepackage{pbox}
+
+\begin{document}
+
+\begin{figure*}[t]
+	\scalebox{0.70}{
+		\begin{tikzpicture}
+		\Tree [.\mybox{VP} [.Head:VC2 看 ] [.aspect:Di 著 ] [.\mybox{goal:NP} [.\mybox{predication:VP·的}\red{~(depth=0)} [.\mybox{head:VP}\red{~(1)} [.\mybox{location:NP}\red{~(2)} [.property:Nab\red{~(3)} 窗 ] [.Head:Ncda\red{~(3)} 外 ] ]  [.\mybox{standard:PP}\red{~(2)} [.Head:P58\red{~(3)} 隨 ] [.\mybox{DUMMY:NP}\red{~(3)} [.Head:Naa\red{~(4)} 風 ] ] ] [.Head:VA11\red{~(2)} 飄動 ] ] [.Head:DE\red{~(1)} 的 ] ] [.Head:Nab 樹枝 ] ] ] ] ] 
+		\end{tikzpicture}
+	}%
+	\caption{Example Sinica tree, w/ RC depths (phrasal nodes in rectangle)}
+\end{figure*}
+
+\end{document}
